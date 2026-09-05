@@ -1,20 +1,26 @@
-
 CC=gcc
+CFLAGS=-Wall -Wextra -Werror
 
-all: Colleen
+PROGRAMS=Colleen Grace
+
+all: $(PROGRAMS)
 
 clean:
-	-rm Colleen.o
+	-rm Colleen.o Grace.o
 
 fclean: clean
-	-rm Colleen
+	-rm $(PROGRAMS)
 
 re: fclean all
 
-Colleen: Colleen.o
-	gcc $< -o $@
+$(PROGRAMS): %: %.o
+	gcc $(CFLAGS) $< -o $@
 
-test: Colleen
+tc: Colleen
 	./$< | diff $<.c -
 
-PHONY: all clean fclean re test
+tg: Grace
+	./$< | diff $<.c $<_kid.c
+
+PHONY: all clean fclean re tc
+
