@@ -1,12 +1,13 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
 
-PROGRAMS=Colleen Grace
+PROGRAMS=Colleen Grace Sully
 
 all: $(PROGRAMS)
 
 clean:
-	-rm Colleen.o Grace.o
+	-rm Colleen.o Grace.o Sully.o
+	-rm Grace_kid.c Sully_*.c
 
 fclean: clean
 	-rm $(PROGRAMS)
@@ -21,6 +22,10 @@ tc: Colleen
 
 tg: Grace
 	./$< | diff $<.c $<_kid.c
+
+ts: Sully
+	./$<
+	./$< | diff $<.c $<_5.c
 
 PHONY: all clean fclean re tc
 
