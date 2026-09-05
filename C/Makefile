@@ -7,7 +7,7 @@ all: $(PROGRAMS)
 
 clean:
 	-rm Colleen.o Grace.o Sully.o
-	-rm Grace_kid.c Sully_*.c
+	-rm Grace_kid.c Sully_*
 
 fclean: clean
 	-rm $(PROGRAMS)
@@ -24,8 +24,15 @@ tg: Grace
 	./$< | diff $<.c $<_kid.c
 
 ts: Sully
-	./$<
-	./$< | diff $<.c $<_5.c
+	-rm -r tmp
+	-mkdir tmp
+	cd tmp && gcc ../$<.c -o $< && ./$<
+	cd tmp && ls -al | grep $<| wc -l
+	-cd tmp && diff ../$<.c $<_0.c
+	-cd tmp && diff $<_3.c $<_2.c
+	-cd tmp && diff ../$<.c $<_4.c
+	ls tmp
 
-PHONY: all clean fclean re tc
+
+.PHONY: all clean fclean re tc tg ts
 

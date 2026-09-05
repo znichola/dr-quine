@@ -3,5 +3,8 @@ Grace
 Sully
 *.o
 *.swp
+a.out
 Grace_kid.*
 Sully_*.*
+tmp
+
