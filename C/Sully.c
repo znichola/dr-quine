@@ -15,5 +15,5 @@ char c[100];
 memcpy(c+2,b,strlen(b));
 c[0]='.';c[1]='/';c[strlen(b)]=0;
 if(!fork()) execlp("gcc","gcc",b,"-o",c,NULL);
-else {wait(NULL); if(n>=0)execlp(c,c,NULL);}
+else {wait(NULL);if(n>=0)execlp(c,c,NULL);}
 }
