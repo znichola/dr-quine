@@ -8,6 +8,7 @@ all: $(PROGRAMS)
 clean:
 	-rm Colleen.o Grace.o Sully.o
 	-rm Grace_kid.c Sully_*
+	-rm -r tmp
 
 fclean: clean
 	-rm $(PROGRAMS)
