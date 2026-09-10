@@ -2,9 +2,9 @@
 /*
    One comment
 */
-#define STR "#include <stdio.h>%1$c/*%1$c   One comment%1$c*/%1$c#define STR %2$c%3$s%2$c%1$c#define MAIN int main() {FILE *fd=fopen(%2$cGrace_kid.c%2$c,%2$cw%2$c);fprintf(fd,STR,10,34,STR);fclose(fd);}%1$c#define THREE%1$c%1$cMAIN%1$c%1$c"
-#define MAIN int main() {FILE *fd=fopen("Grace_kid.c","w");fprintf(fd,STR,10,34,STR);fclose(fd);}
-#define THREE
+#define FT(x) int main() {char code[]=S(x);char str[]="#include <stdio.h>%1$c/*%1$c   One comment%1$c*/%1$c#define FT(x) int main() {char code[]=S(x);char str[]=%2$c%3$s%2$c;x;}%1$c#define Q(x) #x%1$c#define S(x) Q(x)%1$c%1$cFT(%4$s)%1$c%1$c";x;}
+#define Q(x) #x
+#define S(x) Q(x)
 
-MAIN
+FT(FILE *fd=fopen("Grace_kid.c","w");fprintf(fd,str,10,34,str,code);fclose(fd);)
 
