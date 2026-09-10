@@ -30,11 +30,15 @@ tg: Grace
 ts: Sully
 	-rm -r tmp
 	-mkdir tmp
-	cd tmp && gcc ../$<.s -o $< && ./$<
+	cp Sully tmp && cd tmp && ./$<
 	cd tmp && ls -al | grep $<| wc -l
 	-cd tmp && diff ../$<.s $<_0.s
 	-cd tmp && diff $<_3.s $<_2.s
 	-cd tmp && diff ../$<.s $<_4.s
 	ls tmp
+
+convert: Sully.s convert.js
+	node convert.js $< > tmp.s
+	mv tmp.s $<
 
 .PHONY: all clean fclean re tc tg ts
