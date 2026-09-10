@@ -1,20 +1,40 @@
+CC=gcc
+CFLAGS=-Wall -Wextra -Werror
 
-all: Colleen
+PROGRAMS=Colleen Grace Sully
+
+all: $(PROGRAMS)
+
+clean:
+	-rm Colleen.o Grace.o Sully.o
+	-rm Grace_kid.s Sully_*
+	-rm -r tmp
+
+fclean: clean
+	-rm $(PROGRAMS)
+
+re: fclean all
 
 %.o: %.s
 	nasm -f elf64 $< -o $@
 
-Colleen: Colleen.o
-	gcc $< -o $@
+$(PROGRAMS): %: %.o
+	$(CC) $(CFLAGS) $< -o $@
 
-ts: Colleen
-	./Colleen | diff Colleen.s -
+tc: Colleen
+	./$< | diff $<.s -
 
-clean:
-	-rm Colleen Colleen.o
+tg: Grace
+	./$< | diff $<.s $<_kid.s
 
-fclean: clean
+ts: Sully
+	-rm -r tmp
+	-mkdir tmp
+	cd tmp && gcc ../$<.s -o $< && ./$<
+	cd tmp && ls -al | grep $<| wc -l
+	-cd tmp && diff ../$<.s $<_0.s
+	-cd tmp && diff $<_3.s $<_2.s
+	-cd tmp && diff ../$<.s $<_4.s
+	ls tmp
 
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re tc tg ts

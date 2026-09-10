@@ -16,7 +16,7 @@ fclean: clean
 re: fclean all
 
 $(PROGRAMS): %: %.o
-	gcc $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
 tc: Colleen
 	./$< | diff $<.c -
