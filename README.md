@@ -1,12 +1,14 @@
 # Dr Quine
 
 A quine is a computer program (a kind of metaprogram) whose output and source 
-code are identical. The solution is an empty program, or one that reads it's 
-own source file, this is not considered for this project.
+code are identical. A solution is an empty program, or one that reads it's 
+own source file, but this is not considered for this project.
 
 This is a project done for 42Nice.
 
-All exercises are done in C and then in assembly.
+All exercises are done in C and then in assembly. And as bonus there is also one in JS.
+
+The makefiles contain test commands `make tg` to test Grace and so on.
 
 ## Colleen
 
@@ -30,5 +32,5 @@ which must be identical the the source. It must contain at least:
 ## Sully
 
 The program writes a file called `Sully_X.c` compiles and executes it, x is
-so decremented untill it's 0.
+so decremented until it's >= 0.
 
